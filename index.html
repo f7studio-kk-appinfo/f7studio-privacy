@@ -98,6 +98,7 @@
     border-collapse:collapse;
     margin:18px 0 8px;
     font-size:14px;
+    table-layout:fixed;
   }
   table.data-table th{
     text-align:left;
@@ -105,15 +106,23 @@
     padding:10px 12px;
     background:var(--accent-soft);
     border-bottom:1px solid var(--line);
+    word-break:break-word;
+    overflow-wrap:break-word;
   }
   table.data-table td{
     padding:10px 12px;
     border-bottom:1px solid var(--line);
     vertical-align:top;
     color:var(--ink);
+    word-break:break-word;
+    overflow-wrap:break-word;
   }
   table.data-table tr:last-child td{
     border-bottom:none;
+  }
+  table.data-table th:first-child,
+  table.data-table td:first-child{
+    width:34%;
   }
   .app-block{
     margin-top:44px;
@@ -175,10 +184,15 @@
     color:var(--sub);
     font-size:13px;
   }
-  a{color:var(--accent);}
+  a{color:var(--accent); word-break:break-word; overflow-wrap:break-word;}
   @media (max-width:600px){
     .wrap{padding:48px 18px 80px;}
     .app-block{padding:20px 18px 4px;}
+    table.data-table{font-size:13px;}
+    table.data-table th,
+    table.data-table td{padding:8px 8px;}
+    table.data-table th:first-child,
+    table.data-table td:first-child{width:38%;}
   }
 </style>
 </head>
@@ -188,7 +202,7 @@
   <header class="top">
     <p class="eyebrow">Privacy Policy</p>
     <h1>プライバシーポリシー</h1>
-    <p class="meta">F7Studio, K.K.（個人開発者：寺田剛彦） ／ 最終更新日：2026年7月23日</p>
+    <p class="meta">F7Studio, K.K. ／ 最終更新日：2026年7月23日</p>
     <div class="apps-row">
       <span class="app-chip">FootChord</span>
       <span class="app-chip">GestureWave</span>
@@ -304,47 +318,4 @@
     </table>
   </div>
 
-  <div class="app-block" id="loopmusicplayer">
-    <h3 class="app-title">LoopMusicPlayer <span class="tag">LOOP PLAYBACK + PLAYLISTS</span></h3>
-    <p class="desc">端末内の楽曲をループ再生できる音楽プレイヤーアプリ</p>
-
-    <table class="data-table">
-      <tr><th>取得する情報</th><th>用途</th></tr>
-      <tr>
-        <td>メディアライブラリへのアクセス</td>
-        <td>端末内の楽曲を選択・再生するために使用します。</td>
-      </tr>
-      <tr>
-        <td>広告識別情報（Google AdMob）</td>
-        <td>無料版で表示されるバナー広告の配信に、Google AdMobを利用しています。本アプリはApp Tracking Transparency（ATT）のトラッキング許可を要求していないため、AdMobは非パーソナライズ広告のみを配信します。広告配信に伴い、Google社のプライバシーポリシーに基づいた情報（デバイス種別や大まかな地域等の技術情報）がGoogle社に送信される場合があります。詳細はGoogleのプライバシーポリシー（https://policies.google.com/privacy）をご確認ください。</td>
-      </tr>
-    </table>
-    <p class="note">
-      有料版（広告非表示版）を購入すると、広告表示・それに伴う情報送信は行われなくなります。Apple Musicのサブスクリプション経由の楽曲（DRM保護）は、iOSの仕様上読み込むことができません。
-    </p>
-  </div>
-
-  <section id="rights" style="margin-top:56px;">
-    <h2>2. 利用者の権利・お問い合わせ</h2>
-    <p>
-      本アプリは個人情報を収集・保存しない設計のため、開示・訂正・削除等の請求対象となるデータを当社が保持することは基本的にありません。購入履歴等、Apple社が管理する情報については、Apple社のプライバシーポリシーおよびApp Storeのアカウント設定をご確認ください。
-    </p>
-    <p>
-      本アプリおよび本ポリシーに関するお問い合わせは、以下の連絡先までご連絡ください。
-    </p>
-    <ul>
-      <li>運営者：F7Studio, K.K.（寺田剛彦）</li>
-      <li>お問い合わせ：support@f7studio.example.com（実際の連絡先メールアドレスに差し替えてください）</li>
-    </ul>
-    <p class="note">
-      本ポリシーは、法令の改正やアプリの機能追加に伴い、予告なく変更されることがあります。重要な変更がある場合は、本ページ上での更新をもってお知らせします。
-    </p>
-  </section>
-
-  <footer>
-    © 2026 F7Studio, K.K. All rights reserved.
-  </footer>
-
-</div>
-</body>
-</html>
+  <div
