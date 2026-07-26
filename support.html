@@ -68,6 +68,40 @@
   .app-chip:hover{
     border-color:var(--accent);
   }
+  .site-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:24px 0 8px;
+  }
+  .site-nav a{
+    flex:1 1 auto;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+    padding:14px 18px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .site-nav a:hover{
+    border-color:var(--accent);
+  }
+  .site-nav a.is-active{
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .site-nav a.is-featured{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  @media (max-width:480px){
+    .site-nav{flex-direction:column;}
+  }
   section{
     margin-top:52px;
   }
@@ -203,6 +237,11 @@
       <a href="#airfxdj" class="app-chip">AirFX DJ</a>
       <a href="#loopmusicplayer" class="app-chip">LoopMusicPlayer</a>
     </div>
+    <nav class="site-nav">
+      <a href="./">プライバシーポリシー</a>
+      <a href="support.html" class="is-active">サポート</a>
+      <a href="guide.html" class="is-featured">使い方ガイド</a>
+    </nav>
   </header>
 
   <section>

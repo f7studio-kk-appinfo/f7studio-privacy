@@ -68,6 +68,40 @@
   .app-chip:hover{
     border-color:var(--accent);
   }
+  .site-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:24px 0 8px;
+  }
+  .site-nav a{
+    flex:1 1 auto;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+    padding:14px 18px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .site-nav a:hover{
+    border-color:var(--accent);
+  }
+  .site-nav a.is-active{
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    color:var(--accent);
+  }
+  .site-nav a.is-featured{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:#fff;
+  }
+  @media (max-width:480px){
+    .site-nav{flex-direction:column;}
+  }
   section{
     margin-top:52px;
   }
@@ -253,6 +287,11 @@
       <a href="#airfxdj" class="app-chip">AirFX DJ</a>
       <a href="#loopmusicplayer" class="app-chip">LoopMusicPlayer</a>
     </div>
+    <nav class="site-nav">
+      <a href="./">プライバシーポリシー</a>
+      <a href="support.html">サポート</a>
+      <a href="guide.html" class="is-active is-featured">使い方ガイド</a>
+    </nav>
   </header>
 
   <section>
@@ -401,6 +440,9 @@
 
     <h4>日本語／英語ローカライズ</h4>
     <p>端末の言語設定に応じて、日本語・英語どちらの表示にも対応しています。</p>
+
+    <h4>無料トライアル／Pro版</h4>
+    <p>初回起動から14日間、すべての機能を無料でご利用いただけます。トライアル期間中は特定の機能のみが制限されることはなく、上記でご紹介した機能はすべてそのままお使いいただけます。トライアル終了後も引き続きご利用いただくには、購入（買い切り型）が必要です。購入情報はApple IDに紐づくため、再インストール後も設定画面の「購入を復元」から復元できます。</p>
 
     <div class="faq-link">
       <p>インターフェースの認識、カメラのジェスチャー認識、モーションモード、パラメータのロック、外部MIDI音源との連携などに関するよくある質問は <a href="support.html#gesturewave">サポートページのGestureWave FAQ</a> にまとめています。</p>
