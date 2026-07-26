@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使い方ガイド | F7Studio, K.K.</title>
+<style>
+  :root{
+    --ink:#1c1d1f;
+    --sub:#57595e;
+    --line:#e4e3df;
+    --paper:#fbfaf7;
+    --accent:#2f5d50;
+    --accent-soft:#eef3f1;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Hiragino Sans", "Yu Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:72px 24px 120px;
+  }
+  header.top{
+    margin-bottom:56px;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 14px;
+  }
+  h1{
+    font-size:clamp(28px,4vw,38px);
+    line-height:1.3;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .meta{
+    color:var(--sub);
+    font-size:14px;
+    margin:0;
+  }
+  .apps-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:22px;
+  }
+  .app-chip{
+    font-size:13px;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--ink);
+    background:#fff;
+    text-decoration:none;
+  }
+  .app-chip:hover{
+    border-color:var(--accent);
+  }
+  section{
+    margin-top:52px;
+  }
+  section > h2{
+    font-size:20px;
+    margin:0 0 18px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  h3{
+    font-size:16px;
+    margin:28px 0 10px;
+  }
+  h4{
+    font-size:14.5px;
+    margin:20px 0 8px;
+  }
+  p{
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  ul, ol{
+    margin:0 0 14px;
+    padding-left:22px;
+  }
+  li{
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .note{
+    color:var(--sub);
+    font-size:14px;
+  }
+  table.data-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:8px 0 20px;
+    font-size:14px;
+    table-layout:fixed;
+  }
+  table.data-table th{
+    text-align:left;
+    font-weight:600;
+    padding:10px 12px;
+    background:var(--accent-soft);
+    border-bottom:1px solid var(--line);
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+  table.data-table td{
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    color:var(--ink);
+    word-break:break-word;
+    overflow-wrap:break-word;
+  }
+  table.data-table tr:last-child td{
+    border-bottom:none;
+  }
+  table.data-table th:first-child,
+  table.data-table td:first-child{
+    width:30%;
+  }
+  .step-card{
+    padding:16px 18px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin:0 0 14px;
+  }
+  .step-card h4{
+    margin:0 0 6px;
+  }
+  .step-card p, .step-card ul{
+    margin:0;
+  }
+  .step-card ul{
+    margin-top:8px;
+  }
+  .app-block{
+    margin-top:44px;
+    padding:26px 26px 8px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .app-block h3.app-title{
+    font-size:17px;
+    margin:0 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .app-block h3.app-title .tag{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--accent);
+    letter-spacing:.06em;
+  }
+  .app-block .desc{
+    color:var(--sub);
+    font-size:14px;
+    margin:0 0 20px;
+  }
+  .subhead{
+    font-size:13px;
+    font-family:var(--mono);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:32px 0 14px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .toc{
+    margin-top:28px;
+    padding:18px 20px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+  }
+  .toc p{
+    margin:0 0 10px;
+    font-size:13px;
+    color:var(--sub);
+    font-family:var(--mono);
+    letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .toc ol{
+    margin:0;
+    padding-left:20px;
+    font-size:14px;
+  }
+  .toc a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+  .toc a:hover{
+    border-color:var(--accent);
+  }
+  .faq-link{
+    margin:32px 0 8px;
+    padding:20px;
+    background:var(--accent-soft);
+    border-radius:10px;
+  }
+  .faq-link p{
+    margin:0;
+    font-size:14.5px;
+  }
+  .faq-link a{
+    font-weight:600;
+  }
+  footer{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    color:var(--sub);
+    font-size:13px;
+  }
+  a{color:var(--accent);}
+  @media (max-width:600px){
+    .wrap{padding:48px 18px 80px;}
+    .app-block{padding:20px 18px 4px;}
+    table.data-table{font-size:13px;}
+    table.data-table th, table.data-table td{padding:8px 8px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Guide</p>
+    <h1>使い方ガイド</h1>
+    <p class="meta">F7Studio, K.K. ／ 最終更新日：2026年7月26日</p>
+    <div class="apps-row">
+      <a href="#footchord" class="app-chip">FootChord</a>
+      <a href="#gesturewave" class="app-chip">GestureWave</a>
+      <a href="#airfxdj" class="app-chip">AirFX DJ</a>
+      <a href="#loopmusicplayer" class="app-chip">LoopMusicPlayer</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>このページについて</h2>
+    <p>
+      F7Studio, K.K.が提供するiOSアプリケーション「FootChord」「GestureWave」「AirFX DJ」「LoopMusicPlayer」の使い方をまとめています。基本的な操作方法と主な機能を、アプリごとに紹介しています。個別の不具合やエラーに関するよくある質問は、各アプリの節から<a href="support.html">サポートページ</a>のFAQへリンクしています。
+    </p>
+
+    <div class="toc">
+      <p>Jump to</p>
+      <ol>
+        <li><a href="#footchord">FootChord</a></li>
+        <li><a href="#gesturewave">GestureWave</a></li>
+        <li><a href="#airfxdj">AirFX DJ</a></li>
+        <li><a href="#loopmusicplayer">LoopMusicPlayer</a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== FootChord ===================== -->
+  <div class="app-block" id="footchord">
+    <h3 class="app-title">FootChord <span class="tag">MIDI FOOT CONTROLLER APP</span></h3>
+    <p class="desc">MIDIフットコントローラーでコード進行を1つずつ送りながら演奏できる、ライブ演奏用アプリです。</p>
+
+    <p class="subhead">基本操作</p>
+
+    <div class="step-card">
+      <h4>演奏画面</h4>
+      <p>画面下部のグリッドに並んだコードを、ペダル操作またはタップで1つずつ送りながら演奏します。</p>
+      <ul>
+        <li>コードを左右にすばやくスワイプ：オクターブを変更</li>
+        <li>コードをダブルタップ：転回形（基本形／第1〜3転回形）を変更</li>
+        <li>サスティン切り替え（∞アイコン）：ONにするとタップ後も鳴り続け、OFFにすると押している間だけ鳴ります</li>
+        <li>戻る／早戻し／再生／停止／早送りの各ボタンで、コード進行の先頭・前後への移動ができます</li>
+      </ul>
+    </div>
+
+    <div class="step-card">
+      <h4>編集画面</h4>
+      <p>コードをタップして入力・変更できます。空きマスは「ブランク」として位置を保持したまま残せます。Undo / Redo（最大20件）にも対応しています。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>プロジェクト画面</h4>
+      <p>コード進行はプロジェクト単位で管理します。複数のプロジェクトを作成・切り替え・名前変更・削除できるほか、Excel（.xlsx）やMusicXML（.musicxml／.mxl）ファイルから自動でプロジェクトを作成することもできます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>セットリスト画面</h4>
+      <p>複数の曲（プロジェクト）をまとめて、ライブのセット単位で管理できます。長押しで曲順を並び替えられます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>設定画面</h4>
+      <ul>
+        <li>MIDI Learn：任意のフットコントローラーのペダルに「リセット／前へ／再生／停止／次へ」を割り当てられます。「学習」ボタンを押してから実際にペダルを踏むと割り当てられます</li>
+        <li>Bluetooth MIDI機器を検出：ペアリング済みでない機器を接続する画面を開きます</li>
+        <li>表示モード：ライト／ダーク／システムに合わせる、から選択できます</li>
+        <li>言語：日本語／English／システムに合わせる、から選択できます</li>
+      </ul>
+    </div>
+
+    <p class="subhead">機能紹介</p>
+
+    <h4>MIDI連携</h4>
+    <p>Bluetooth・USB両方のMIDIフットコントローラーに対応しています。他のMIDIアプリ（GarageBand、KORG Moduleなど）へCore MIDI経由で音源を鳴らすことも可能で、その場合は内蔵音源が自動でミュートされます。他のMIDIアプリと連携中に入力を受け付けなくなった場合のために、設定タブに「MIDI出力の接続をリセット」ボタンも用意しています。</p>
+
+    <h4>Excelコード譜インポート（トライアル終了後はPro限定）</h4>
+    <p>Googleドライブ等（Filesアプリ経由）に保存したExcelのコード譜を読み込み、自動でプロジェクトを作成します。タイトルの位置・コードの列・行の間隔など、譜面のフォーマットに合わせて柔軟に設定でき、プリセットとして複数保存できます。フラット表記（Eb等）の自動変換や「△」記号（メジャー/メジャーセブンス）、テンション表記の除去など、日本の一般的なコード譜表記にも対応しています。認識できなかったコードは一覧表示され、手動修正が可能です。</p>
+
+    <h4>MusicXMLインポート（トライアル終了後はPro限定）</h4>
+    <p>MuseScoreなどで作成した楽譜ファイルから、明示的に入力された「コードネーム記号」を読み取り、自動でプロジェクトを作成します。曲タイトルは楽譜のタイトル情報から自動取得されます。認識できなかったコードは一覧表示され、手動修正が可能です。</p>
+
+    <h4>無料トライアル／Pro版</h4>
+    <p>初回起動から14日間はすべての機能を無料でご利用いただけます（プロジェクト数・セットリスト数・Excelインポートすべて無制限）。トライアル終了後も引き続きご利用いただくには、「制限を解除」からのご購入（買い切り型）が必要です。購入情報はApple IDに紐づくため、再インストール後も設定画面の「購入を復元」から復元できます。</p>
+
+    <div class="faq-link">
+      <p>接続や動作に関するよくある質問は <a href="support.html#footchord">サポートページのFootChord FAQ</a> にまとめています。</p>
+    </div>
+  </div>
+
+  <!-- ===================== GestureWave ===================== -->
+  <div class="app-block" id="gesturewave">
+    <h3 class="app-title">GestureWave <span class="tag">GESTURE-CONTROLLED AUDIO EFFECTS</span></h3>
+    <p class="desc">カメラで捉えた手のジェスチャーや本体の傾きを使って、リアルタイムにオーディオエフェクトを操作するアプリです。</p>
+
+    <p class="subhead">基本操作</p>
+
+    <div class="step-card">
+      <h4>1. 音源を選ぶ</h4>
+      <p>画面上部の「音源」から、右上の歯車アイコン（設定）→「音源を選択」に進み、鳴らしたい音源を選びます。</p>
+      <ul>
+        <li><strong>AUv3音源</strong>：端末にインストール済みの音源アプリ（KORG Moduleなど）を選択します</li>
+        <li><strong>アナログイン</strong>：Rubix24などのUSBオーディオインターフェースを接続している場合、ギターなど外部楽器の入力をエフェクト対象として選択できます</li>
+      </ul>
+      <p style="margin-top:8px;">選択後、画面下部の「起動」ボタンをタップすると再生が始まります。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>2. ジェスチャーで操作する</h4>
+      <p>設定の「操作方式」で、カメラ（手のジェスチャー）とモーション（本体の傾き）のどちらで操作するかを選べます。</p>
+      <ul>
+        <li><strong>カメラモード</strong>：手の「開閉」と「高さ」を認識し、エフェクトパラメータをリアルタイムに操作します。画面下部に手が認識できているかの表示があります</li>
+        <li><strong>モーションモード</strong>：本体を傾ける動作（ピッチ角・ロール角）でパラメータを操作します</li>
+      </ul>
+    </div>
+
+    <div class="step-card">
+      <h4>3. エフェクトを選ぶ</h4>
+      <p>画面上部のTREM／FLAN／PHAS／RING／WHAMのアイコンをタップして、5種類のエフェクトから切り替えられます。各エフェクトのつまみ（GAIN・RATE・DEPTH・MIX・FEEDBACKなど）は手動で調整することも、ジェスチャーで動かすパラメータとして割り当てることもできます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>4. パラメータをジェスチャーに割り当てる／固定する</h4>
+      <p>各パラメータには「手の開閉」「手の高さ」といった割り当てが用意されています。誤操作を防ぎたい場合は、パラメータ横の鍵アイコンをタップするとその値を固定（ロック）できます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>5. MIDIで音源を操作する</h4>
+      <p>MIDI Learn機能を使うと、Bluetooth MIDI機器（iRig BlueBoardなど）や外部MIDI音源アプリと連携できます。設定画面からBluetooth MIDIのペアリング、および各パラメータへのMIDI Learn割り当てが行えます。</p>
+    </div>
+
+    <p class="subhead">機能紹介</p>
+
+    <h4>5種類のオーディオエフェクト</h4>
+    <table class="data-table">
+      <tr><th>エフェクト</th><th>概要</th></tr>
+      <tr><td>Tremolo（TREM）</td><td>音量を周期的に揺らします。</td></tr>
+      <tr><td>Flanger（FLAN）</td><td>金属的なうねりを加えるモジュレーション系エフェクトです。</td></tr>
+      <tr><td>Phaser（PHAS）</td><td>位相のズレによる独特のうねりを加えます。</td></tr>
+      <tr><td>Ring Modulator（RING）</td><td>入力信号にキャリア信号を掛け合わせ、金属的・機械的な音色を作ります。</td></tr>
+      <tr><td>Wah（WHAM）</td><td>帯域を動かすフィルターで、ワウペダルのような効果を加えます。</td></tr>
+    </table>
+
+    <h4>カメラ／モーションによるジェスチャー操作</h4>
+    <p>内蔵カメラで手の動きを認識するモードと、本体の傾きセンサーを使うモードの2種類があり、演奏スタイルに合わせて切り替えられます。パラメータごとにジェスチャーの割り当て・固定（ロック）が可能です。</p>
+
+    <h4>アナログイン（外部オーディオインターフェース対応）</h4>
+    <p>Roland Rubix24などのUSBオーディオインターフェースを接続すると、ギターなどの外部楽器をそのままエフェクト対象にできます。ペダルエフェクター感覚での利用を想定しています。</p>
+
+    <h4>MIDI Learn／Bluetooth MIDI</h4>
+    <p>各パラメータにBluetooth MIDIコントローラーや外部MIDI機器を割り当てて操作できます。フットコントローラーなど、ハンズフリーでの操作にも対応します。</p>
+
+    <h4>AUv3ホスティング</h4>
+    <p>KORG Moduleなど、お好みのAUv3音源アプリをGestureWave内で鳴らし、そこにジェスチャーエフェクトを重ねて演奏できます。</p>
+
+    <h4>日本語／英語ローカライズ</h4>
+    <p>端末の言語設定に応じて、日本語・英語どちらの表示にも対応しています。</p>
+
+    <div class="faq-link">
+      <p>インターフェースの認識、カメラのジェスチャー認識、モーションモード、パラメータのロック、外部MIDI音源との連携などに関するよくある質問は <a href="support.html#gesturewave">サポートページのGestureWave FAQ</a> にまとめています。</p>
+    </div>
+  </div>
+
+  <!-- ===================== AirFX DJ ===================== -->
+  <div class="app-block" id="airfxdj">
+    <h3 class="app-title">AirFX DJ <span class="tag">LOOP PLAYBACK + GESTURE EFFECTS</span></h3>
+    <p class="desc">音楽再生とジェスチャー操作のオーディオエフェクトを統合したアプリです。</p>
+
+    <p class="subhead">基本操作</p>
+
+    <div class="step-card">
+      <h4>1. 曲を選ぶ</h4>
+      <p>「再生」タブ上部の曲名バーをタップすると、ミュージックライブラリが開きます。「曲」「アルバム」「プレイリスト」「アーティスト」のタブと検索で目的の曲を絞り込めます。</p>
+      <p class="note">※ Apple Musicのストリーミング再生など著作権保護（DRM）がかかった曲は、iOSの仕様上読み込めません。端末に直接ダウンロード・同期された曲をご利用ください。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>2. 再生する</h4>
+      <p>再生／一時停止／停止、10秒早送り・巻き戻しの各ボタンで操作します。シークバーをドラッグすると任意の位置に移動できます。ロック画面・コントロールセンターからの操作にも対応しています。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>3. 速度・キーを変える</h4>
+      <p>SPEEDつまみで再生速度（0.5〜1.5倍）を、KEYの丸いダイヤルでピッチ（±12半音）を変更できます。速度を変えてもキーは変わりません（ピッチ保持型）。それぞれダブルタップで初期値に戻せます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>4. ループさせる</h4>
+      <p>「開始」「終了」ボタンで、現在の再生位置をループの範囲に設定します。LOOPスイッチをオンにすると、その区間が繰り返し再生されます。よく使う区間は1曲につき最大6個までプリセットとして保存できます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>5. プレイリストに保存する</h4>
+      <p>曲・エフェクト設定・ループ区間・速度をまとめて「プレイリストに保存」できます（最大10個）。保存した内容は、画面左上のアイコンから一覧を開いて呼び出せます。</p>
+    </div>
+
+    <p class="subhead">機能紹介</p>
+
+    <h4>5種類のオーディオエフェクト</h4>
+    <p>「エフェクト」タブでは、以下の5種類から選んで音にかけられます。MIX・FDBKなどのつまみで効き具合を調整できます（つまみは選んだエフェクトによって使えるものが変わります）。</p>
+    <table class="data-table">
+      <tr><th>エフェクト</th><th>内容</th></tr>
+      <tr><td>TREM</td><td>トレモロ。音量を周期的に揺らします</td></tr>
+      <tr><td>FLAN</td><td>フランジャー。金属的なうねりを加えます</td></tr>
+      <tr><td>PHAS</td><td>フェイザー。位相のうねりで音に動きを出します</td></tr>
+      <tr><td>RING</td><td>リングモジュレーター。ロボットのような音色変化を作ります</td></tr>
+      <tr><td>WAH</td><td>ワウ。踏み込むように音色が変化する効果です。POSつまみでフィルターの効き具合、FDBKつまみでレゾナンスを調整できます</td></tr>
+    </table>
+
+    <h4>MOTION機能</h4>
+    <p>「エフェクト」タブ下部のMOTIONボタンを押している間、本体を傾けた角度がエフェクトのパラメータにリアルタイムで反映されます。どの傾き（軸）をどのパラメータに割り当てるかは、画面内の項目から選べます。鍵アイコンをタップすると、誤操作防止のためその項目の値を固定できます。設定画面の「検知幅のチューニング」から、傾きに対する反応の強さ・鈍さを調整できます。</p>
+
+    <h4>お試し期間・購入について</h4>
+    <p>初回起動から14日間、すべての機能を無料でお試しいただけます。お試し期間が終了すると、「制限解除」（買い切り購入）が必要になります。一度購入すれば、期間の制限なく永続的にご利用いただけます。保存済みのプレイリストやループ設定は、お試し期間の状態にかかわらず失われません。</p>
+
+    <div class="faq-link">
+      <p>AirFX DJに関するよくある質問は <a href="support.html#airfxdj">サポートページのAirFX DJ FAQ</a> にまとめています。</p>
+    </div>
+  </div>
+
+  <!-- ===================== LoopMusicPlayer ===================== -->
+  <div class="app-block" id="loopmusicplayer">
+    <h3 class="app-title">LoopMusicPlayer <span class="tag">LOOP PLAYBACK + PLAYLISTS</span></h3>
+    <p class="desc">端末内の楽曲を指定区間で無限ループ再生できる音楽プレイヤーアプリです。楽器の練習、ダンス・振り付けの確認、語学のリスニング練習など、同じ箇所を繰り返し聴きたいシーンでご活用いただけます。</p>
+
+    <p class="subhead">基本操作</p>
+
+    <div class="step-card">
+      <h4>1. 曲を選ぶ</h4>
+      <p>画面上部の「ミュージックライブラリから選択」をタップすると、曲の選択画面が開きます。「曲」「アルバム」「プレイリスト」「アーティスト」のタブと検索欄から曲を探せます。曲を選ぶと、ジャケット画像・曲名が画面に表示され、再生の準備が整います。</p>
+      <p class="note">※ Apple Musicのサブスクリプションでダウンロードした楽曲（著作権保護されたもの）は、iOSの仕様上読み込むことができません。iTunes Storeで購入した楽曲や、CD等から取り込んで端末に同期した楽曲であればご利用いただけます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>2. 再生する</h4>
+      <p>中央の再生ボタンで再生・一時停止を切り替えられます。停止ボタン（赤色）を押すと、再生位置が曲の先頭に戻ります。左右の「10秒」ボタンで早送り・巻き戻しができ、シークバーを直接ドラッグして好きな位置に移動することもできます。</p>
+    </div>
+
+    <div class="step-card">
+      <h4>3. ループ区間を指定する</h4>
+      <p>聴きたい範囲の先頭で「Start」ボタン、終わりで「End」ボタンをタップすると、その区間がループ範囲として設定されます。分・秒を直接指定したい場合は、Start／End欄の数字部分をタップするとドラムロール形式のピッカーが開きます。区間を決めたら「区間ループ」のスイッチをONにすると、その範囲が無限に繰り返し再生されます。</p>
+      <p class="note">※ 区間ループがONの間は、誤操作防止のためStart／Endの再設定はできません。区間を変更したい場合は、一度スイッチをOFFにしてから設定し直してください。「リセット」をタップすると、ループ区間が曲全体に戻り、区間ループもOFFになります。</p>
+    </div>
+
+    <p class="subhead">機能紹介</p>
+
+    <h4>再生速度の変更（キーは変わりません）</h4>
+    <p>「再生速度」のスライダーで、0.3倍速〜1.7倍速の範囲で速度を変更できます。ピッチ（音の高さ）を保ったまま速度だけを変える処理を行っているため、遅くしても声や楽器の音程が不自然に低くなることはありません。数値表示部分をダブルタップすると、等速（1.00x）に一発で戻せます。</p>
+
+    <h4>キー（音程）の変更</h4>
+    <p>「キー」のスライダーでは、再生速度とは独立して、半音単位で±1オクターブ（±12半音）の範囲で音の高さを変更できます。「歌うには少しキーが高い／低い」といった場合の移調練習にご活用いただけます。こちらもラベルのダブルタップで「変更なし」に戻せます。</p>
+
+    <h4>この曲のループ保存（曲ごとに最大6個）</h4>
+    <p>「Start地点」「End地点」の下にある「現在の区間を保存」で、今指定しているループ区間を保存できます。1曲につき最大6個まで保存でき、保存した区間はチップとして一覧表示され、タップ一つで呼び出せます。同じ曲を選び直すと、その曲用に保存した区間がそのまま表示されます。</p>
+
+    <h4>プレイリスト機能（曲＋ループ＋速度＋キーをまるごと保存）</h4>
+    <p>「プレイリストとして保存」では、曲・区間ループのON/OFF・区間・再生速度・キーの設定をまるごと1つの項目として保存できます（最大10個）。画面右上のアイコンから一覧・呼び出しができます。一覧画面では、項目を長押ししたままドラッグすると並び替えができ、左にスワイプすると削除できます。</p>
+    <p class="note">※ プレイリスト機能は、広告なし版（買い切り購入）でご利用いただける機能です。</p>
+
+    <h4>ロック画面・コントロールセンター対応</h4>
+    <p>再生中に画面をロックしても、バックグラウンドで再生が継続します。ロック画面やコントロールセンターから、再生・一時停止・10秒送り戻し・シークバーの操作が可能です。</p>
+
+    <h4>音声の割り込みへの対応</h4>
+    <p>再生中に電話がかかってきた場合や、Bluetooth／有線イヤホンを取り外した場合は、自動的に再生が一時停止します。</p>
+
+    <h4>広告なし版について</h4>
+    <p>無料版では画面下部にバナー広告が表示されます。買い切り購入（サブスクリプションではありません）で広告を非表示にでき、あわせてプレイリスト機能も使えるようになります。購入は端末を機種変更した場合やアプリを再インストールした場合でも、「購入を復元」から引き継げます。</p>
+
+    <div class="faq-link">
+      <p>個別の不具合・エラーメッセージ等に関するよくある質問は <a href="support.html#loopmusicplayer">サポートページのLoopMusicPlayer FAQ</a> にまとめています。</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 F7Studio, K.K. All rights reserved. ／ <a href="./">プライバシーポリシー</a> ／ <a href="support.html">サポート</a>
+  </footer>
+
+</div>
+</body>
+</html>
